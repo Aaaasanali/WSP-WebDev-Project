@@ -7,6 +7,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { TranscriptComponent } from './transcript/transcript.component';
 import { FilesComponent } from './files/files.component';
 import { NewsDetailsComponent } from './news-folder/news-details/news-details.component';
+import { AdminUsersListComponent } from './admin-users-list/admin-users-list.component';
+import { UserCreatorComponent } from './user-creator/user-creator.component';
+import { StudentListComponent } from './student-list/student-list.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'}, 
@@ -17,11 +20,15 @@ export const routes: Routes = [
     component: HomeComponent, 
     children: [
       {path: 'profile/:id', component: ProfileComponent},
+      {path: 'users/profile/:id', component: ProfileComponent},
       {path: 'news', component: NewsComponent},
       {path: 'news/:id', component: NewsDetailsComponent},
       {path: 'journal', component: JournalComponent},
       {path: 'transcript', component: TranscriptComponent},
-      {path: 'files', component: FilesComponent}
+      {path: 'files', component: FilesComponent},
+      {path: 'users', component: AdminUsersListComponent},
+      {path: 'users/create', component: UserCreatorComponent},
+      {path: 'student-list', component: StudentListComponent},
     ]
   },
 ];

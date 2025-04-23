@@ -1,15 +1,14 @@
 export interface User {
-    id: string,
-    login: string,
-    password: string,
+    id: number,
+    username: string,
+    email: string,
     firstname: string,
     lastname: string,
-    fathername: string,
     picture: string,
     iin: string,
-    birthdate: Date,
     gender: boolean,
-    email: string,
     phone: string,
-    category: string
+    is_staff: boolean,
+    is_student: boolean,
+    is_teacher: boolean
 }

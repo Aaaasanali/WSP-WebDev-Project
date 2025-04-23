@@ -1,0 +1,2 @@
+<div><li *ngFor="let item of usersList"><a routerLink="profile/{{item.id}}">{{item.username}}</a><button (click)="deleteUser(+item.id)" *ngIf="item.id!=currUser?.id">delete</button></li></div>
+<button routerLink="create">Create Users</button>

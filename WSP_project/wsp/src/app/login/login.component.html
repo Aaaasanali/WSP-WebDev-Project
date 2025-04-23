@@ -7,11 +7,11 @@
           <p id="logo_descr">Kazakh-British Technological University educational platform</p>
         </div>
           <div id="form_block">
-            <form id="login_form">
+            <form id="login_form" (submit)="login()">
               <div id="login_inputs">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
-                <button type="submit" id="login_btn" (click)="login()">Log In</button>
+                <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+                <button type="submit" id="login_btn">Login</button>
                 <a href="#">Reset Password</a>
               </div>
             </form>

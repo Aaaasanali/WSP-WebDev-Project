@@ -3,28 +3,52 @@
         <h1>Profile</h1>
         <div class="profile-data"> 
             <div class="profile-picture">
-                <img src="{{user.picture}}" class="picture">
-                <button class="change-picture-button" (click)="changePicture()">Change picture</button>
+                <img src="{{user?.picture}}" class="picture">
+                <button class="change-picture-button" (click)="show('pic')">Change picture</button>
+                <form (ngSubmit)="changePic()" #picForm="ngForm" *ngIf="show_picture">
+                    <input type="text" id="edit-pic" [(ngModel)]="newPicURL" name="pic" required>
+                    <button type="submit" [disabled]="picForm.invalid">Save</button>
+                </form>
             </div>
             <div class="user-info">
-                <p class="info-item">ID: <span class="user-info-item">{{user.id}}</span></p>
+                <p class="info-item"><span class="user-info-item" *ngIf="user?.is_student">Student</span><span class="user-info-item" *ngIf="user?.is_teacher">Teacher</span></p>
+                <p class="info-item">Username: <span class="user-info-item">{{user?.username}}</span></p>
                 <hr>
-                <p class="info-item">First Name: <span class="user-info-item">{{user.firstname}}</span></p>
+                <p class="info-item">ID: <span class="user-info-item">{{user?.id}}</span></p>
                 <hr>
-                <p class="info-item">Last Name: <span class="user-info-item">{{user.lastname}}</span></p>
+                <p class="info-item">First Name: <span class="user-info-item">{{user?.firstname}}</span></p>
                 <hr>
-                <p class="info-item">Father Name: <span class="user-info-item">{{user.fathername}}</span></p>
+                <p class="info-item">Last Name: <span class="user-info-item">{{user?.lastname}}</span></p>
                 <hr>
-                <p class="info-item">Birth Date: <span class="user-info-item">{{user.birthdate.toDateString()}}</span></p>
+
+                <div id="email"><p class="info-item">Email: <span class="user-info-item">{{user?.email}}</span></p> 
+                    <button (click)="show('email')">edit</button>
+                    <form (ngSubmit)="changeEmail()" #emailForm="ngForm" *ngIf="show_email">
+                        <input type="email" id="edit-email" [(ngModel)]="newEmail" name="email" required>
+                        <button type="submit" [disabled]="emailForm.invalid">Save</button>
+                    </form>
+                </div>
+
                 <hr>
-                <p class="info-item">EMail: <span class="user-info-item">{{user.email}}</span></p>
+                <div id="phone"><p class="info-item">Phone: <span class="user-info-item">{{user?.phone}}</span></p> 
+                    <button (click)="show('phone')">edit</button>
+                    
+                    <form (ngSubmit)="changePhone()" #phoneForm="ngForm" *ngIf="show_phone">
+                        <input type="text" id="edit-phone" [(ngModel)]="newPhone" name="phone" required>
+                        <button type="submit" [disabled]="phoneForm.invalid">Save</button>
+                    </form>
+                </div>
                 <hr>
-                <p class="info-item">Phone: <span class="user-info-item">{{user.phone}}</span></p>
-                <hr>
-                <p class="info-item">IIN: <span class="user-info-item">{{user.iin}}</span></p>
-                <hr>
-                <p class="info-item">Category: <span class="user-info-item">{{user.category}}</span></p>
-                <hr>
+                <div *ngIf="isStudent">
+                    <p class="info-item">GPA: <span class="user-info-item">{{stud?.gpa}}</span></p>
+                    <hr>
+                    <p class="info-item">Major: <span class="user-info-item">{{stud?.major}}</span></p>
+                    <hr>
+                </div>
+                <div *ngIf="isTeacher">
+                    <p class="info-item">Salary: <span class="user-info-item">{{teacher?.salary}}</span></p>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>  

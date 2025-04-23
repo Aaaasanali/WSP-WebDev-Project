@@ -1,7 +1,10 @@
+import { User } from "./user";
+
 export interface NewsItem {
     id : number;
-    name : string;
+    title : string;
     description : string;
     image : string;
     content: string;
+    author: User;
 }

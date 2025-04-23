@@ -1,0 +1,31 @@
+<p>user-creator works!</p>
+<form (ngSubmit)="submit()" #userForm="ngForm">
+
+    <input type="text" name="username" [(ngModel)]="user.username" required placeholder="Username">
+    <input type="password" name="password" [(ngModel)]="user.password" required placeholder="Password">
+    <input type="email" name="email" [(ngModel)]="user.email" required placeholder="Email">
+    <input type="text" name="phone" [(ngModel)]="user.phone" required placeholder="Phone">
+    
+    <label>Gender:</label>
+    <select name="gender" [(ngModel)]="user.gender">
+      <option [value]="true">Male</option>
+      <option [value]="false">Female</option>
+    </select>
+  
+    <label>User Type:</label>
+    <select name="role" [(ngModel)]="user.role" required>
+      <option value="student">Student</option>
+      <option value="teacher">Teacher</option>
+    </select>
+  
+    <div *ngIf="user.role === 'student'">
+      <input type="text" name="major" [(ngModel)]="user.studentInfo.major" placeholder="Major">
+      <input type="number" name="gpa" [(ngModel)]="user.studentInfo.gpa" placeholder="GPA">
+    </div>
+  
+    <div *ngIf="user.role === 'teacher'">
+      <input type="number" name="salary" [(ngModel)]="user.teacherInfo.salary" placeholder="Salary">
+    </div>
+  
+    <button type="submit" [disabled]="userForm.invalid">Create User</button>
+  </form>

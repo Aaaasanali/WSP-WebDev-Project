@@ -1,7 +1,13 @@
 <ul class="sidebar">
-    <li ><button class="sidebar-item" routerLink="profile/{{user.id}}">Profile</button></li>
+    <li ><button class="sidebar-item" routerLink="profile/{{user?.id}}">Profile</button></li>
     <li ><button class="sidebar-item" routerLink="news">News</button></li>  
+    <div *ngIf="user?.is_student">
     <li ><button class="sidebar-item" routerLink="journal">Journal</button></li>
     <li ><button class="sidebar-item" routerLink="transcript">Transcript</button></li>
+    </div>
+    <div *ngIf="user?.is_teacher">
+        <li ><button class="sidebar-item" routerLink="student-list">Students</button></li>
+    </div>
     <li ><button class="sidebar-item" routerLink="files">Files</button></li>
+    <li *ngIf="user?.is_staff"><button class="sidebar-item" routerLink="users">Users</button></li>
 </ul>

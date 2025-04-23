@@ -5,6 +5,8 @@ import { HeaderComponent } from '../navbars/header/header.component';
 
 import { JournalComponent } from '../journal/journal.component';
 import { SideBarComponent } from '../navbars/side-bar/side-bar.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -15,4 +17,6 @@ import { SideBarComponent } from '../navbars/side-bar/side-bar.component';
 })
 export class HomeComponent {
   
+  constructor(private http:HttpClient, private userService:UserService){}
+
 }
